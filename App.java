@@ -24,9 +24,9 @@ public class App {
        Object selectedvalue = JOptionPane.showInputDialog(null, "Escolha uma função:", "Biblioteca", 
        JOptionPane.INFORMATION_MESSAGE, null, funcoes, funcoes[0]);
 
-       if (selectedvalue.equals("Livro")) {
+       while (selectedvalue.equals("Livro")) {
         
-        Object[] funcoesLivro = {"Adicionar","Remover"};
+        Object[] funcoesLivro = {"Adicionar","Remover", "Listar"};
 
        Object selectedvalueLivro = JOptionPane.showInputDialog(null, "Escolha uma função:", "Biblioteca", 
        JOptionPane.INFORMATION_MESSAGE, null, funcoesLivro, funcoes[0]);
@@ -58,14 +58,30 @@ public class App {
             System.out.println("Titulo: " + tituloString);
             System.out.println("Autor: " + autorString);
             System.out.println("Data: " + dataString);
+
+            livroController.listarLivros();
         } 
         
        } else if (selectedvalueLivro.equals("Remover")) {
 
-         Livro livro = LivroFactory.criarLivro(1,"tituloString","autorString" , 2002);
-            livroController.adicionarLivro(livro);
-            livroController.removerLivro(livro);
+        JTextField id = new JTextField();
+
+        Object[] message = {
+            "id:", id,
+        };
+
+        int option = JOptionPane.showConfirmDialog(null, message, "Digite o ID para exclusão", JOptionPane.OK_CANCEL_OPTION);
+        if (option == JOptionPane.OK_OPTION) {
+            int idString = Integer.parseInt(id.getText());
+
+        livroController.removerLivro(idString);
+        livroController.listarLivros();
         
+        }
+
+       } else if (selectedvalue.equals("Listar")) {
+
+        livroController.listarLivros();
        }
        }
 
