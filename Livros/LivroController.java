@@ -53,8 +53,10 @@ public class LivroController {
                 break; // Sair do loop assim que encontrar o livro.
             }
         }
-        System.out.println("Livro não encontrado para atualização");
     }
+
+
+    // Não implementamos no App mas seria uma implementação em caso de Continuidade
 
     public List<Livro> pesquisarLivrosPorTitulo(String titulo) {
         List<Livro> livrosEncontrados = new ArrayList<>();

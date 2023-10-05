@@ -91,11 +91,44 @@ public class App {
         
         }
 
-       } else if (selectedvalue.equals("Listar")) {
+       } else if (selectedvalueLivro.equals("Editar")) {
+
+        JTextField id = new JTextField();
+        JTextField titulo = new JTextField();
+        JTextField autor = new JTextField();
+        JTextField data = new JTextField();
+
+        Object[] message = {
+            "id:", id,
+            "Titulo:", titulo,
+            "Autor:", autor,
+            "Data Publicação:", data,
+        };
+
+        int option = JOptionPane.showConfirmDialog(null, message, "Editar Livro", JOptionPane.OK_CANCEL_OPTION);
+        if (option == JOptionPane.OK_OPTION) {
+            int idString = Integer.parseInt(id.getText());
+            String tituloString = titulo.getText();
+            String autorString = autor.getText();
+            int dataString = Integer.parseInt(data.getText());
+
+            Livro livro = new Livro(idString, tituloString, autorString, dataString); 
+            livroController.atualizarLivro(livro);
+            
+
+            System.out.println("ID:" + idString);
+            System.out.println("Titulo: " + tituloString);
+            System.out.println("Autor: " + autorString);
+            System.out.println("Data: " + dataString);
+
+               
+        }
+            } else if (selectedvalueLivro.equals("Listar")) {
 
         livroController.listarLivros();
-       }
-       //fim livro fisico
+       
+    }
+      
         }
 
         while (selectedvalueEscolha.equals("Livro Digital")) {
