@@ -1,7 +1,7 @@
 package Funcionarios;
 
 public class Funcionario {
-    private int id;
+    private final int id;
     private String nome;
 
     public Funcionario (int id, String  nome) {
@@ -15,6 +15,10 @@ public class Funcionario {
 
     public String getNome() {
         return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
 }

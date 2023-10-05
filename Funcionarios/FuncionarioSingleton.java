@@ -49,6 +49,14 @@ public class FuncionarioSingleton {
         }
     }
     
+    public void atualizarFuncionario(Funcionario funcionarioAtualizado) {
+        for (Funcionario funcionario : funcionarios) {
+            if (funcionario.getId() == funcionarioAtualizado.getId()) {
+                funcionario.setNome(funcionarioAtualizado.getNome());
+                break;
+            }
+        }
+    }
 
 
 

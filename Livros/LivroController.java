@@ -43,6 +43,29 @@ public class LivroController {
         }
     }
 
+    public void atualizarLivro(Livro livroAtualizado) {
+        for (Livro livro : livros) {
+            if (livro.getId() == livroAtualizado.getId()) {
+                livro.setTitulo(livroAtualizado.getTitulo());
+                livro.setAutor(livroAtualizado.getAutor());
+                livro.setAnoPublicacao(livroAtualizado.getAnoPublicacao());
+                System.out.println("Livro atualizado com Sucesso");
+                break; // Sair do loop assim que encontrar o livro.
+            }
+        }
+        System.out.println("Livro não encontrado para atualização");
+    }
+
+    public List<Livro> pesquisarLivrosPorTitulo(String titulo) {
+        List<Livro> livrosEncontrados = new ArrayList<>();
+        for (Livro livro : livros) {
+            if (livro.getTitulo().equalsIgnoreCase(titulo)) {
+                livrosEncontrados.add(livro);
+            }
+        }
+        return livrosEncontrados;
+    }
+
 
 }
 
