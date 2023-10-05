@@ -5,6 +5,7 @@ import Funcionarios.Funcionario;
 import Funcionarios.FuncionarioSingleton;
 import Livros.Livro;
 import Livros.LivroController;
+import Livros.LivroDigital;
 import Livros.LivroFactory;
 
 public class App {
@@ -27,8 +28,17 @@ public class App {
        JOptionPane.INFORMATION_MESSAGE, null, funcoes, funcoes[0]);
 
        while (selectedvalue.equals("Livro")) {
+
+        Object[] funcoesEscolhaLivro = {"Livro Fisico", "Livro Digital"};
+
+
+        Object selectedvalueEscolha = JOptionPane.showInputDialog(null, "Escolha tipo Livro", "Biblioteca",
+        JOptionPane.INFORMATION_MESSAGE, null, funcoesEscolhaLivro, funcoesEscolhaLivro[0]);
+
+        while (selectedvalueEscolha.equals("Livro Fisico")) {
+            //Livro Fisico
         
-        Object[] funcoesLivro = {"Adicionar","Remover", "Listar"};
+        Object[] funcoesLivro = {"Adicionar","Remover", "Listar", "Editar"};
 
        Object selectedvalueLivro = JOptionPane.showInputDialog(null, "Escolha uma função:", "Biblioteca", 
        JOptionPane.INFORMATION_MESSAGE, null, funcoesLivro, funcoes[0]);
@@ -85,6 +95,62 @@ public class App {
 
         livroController.listarLivros();
        }
+       //fim livro fisico
+        }
+
+        while (selectedvalueEscolha.equals("Livro Digital")) {
+            Object[] funcoesLivroDigital = {"Adicionar"};
+
+            Object selectValueLivro = JOptionPane.showInputDialog(null, "Escolha uma função:", "Biblioteca", 
+            JOptionPane.INFORMATION_MESSAGE, null, funcoesLivroDigital, funcoesEscolhaLivro[0]);
+
+
+            if (selectValueLivro.equals("Adicionar")) {
+                JTextField id = new JTextField();
+                JTextField titulo = new JTextField();
+                JTextField autor = new JTextField();
+                JTextField anoPublicacao = new JTextField();
+                JTextField formato = new JTextField();
+                JTextField tamanhoArquivo = new JTextField();
+
+                Object[] message = {
+                    "id:", id,
+                    "Titulo:", titulo,
+                    "Autor:", autor,
+                    "Data Publicação:", anoPublicacao,
+                    "Formato:", formato,
+                    "Tamanho do Arquivo:", tamanhoArquivo,
+                };
+
+                int option = JOptionPane.showConfirmDialog(null, message, "Entrada", JOptionPane.OK_CANCEL_OPTION);
+                if (option == JOptionPane.OK_OPTION) {
+                int idString = Integer.parseInt(id.getText());
+                String tituloString = titulo.getText();
+                String autorString = autor.getText();
+                int dataString = Integer.parseInt(anoPublicacao.getText());
+                String formatoString = formato.getText();
+                double tamanhoString = Double.parseDouble(tamanhoArquivo.getText());
+
+
+                //Adicionar Livro Digital
+
+                LivroDigital livroDigital = new LivroDigital.Builder(idString)
+                .titulo(tituloString)
+                .autor(autorString)
+                .anoPublicacao(dataString)
+                .formato(formatoString)
+                .tamanhoArquivo(tamanhoString)
+                .build();
+
+                livroController.adicionarLivro(livroDigital);
+                livroController.listarLivros();
+
+            }
+        }
+
+            
+        }
+
        }
 
        while (selectedvalue.equals("Funcionario")) {
