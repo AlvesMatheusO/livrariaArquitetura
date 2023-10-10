@@ -192,7 +192,7 @@ public class App {
 
        while (selectedvalue.equals("Funcionario")) {
         
-         Object[] funcoesFuncionario = {"Adicionar","Remover", "Listar"};
+         Object[] funcoesFuncionario = {"Adicionar","Remover", "Listar", "Editar"};
         
         Object selectedvalueFuncionario = JOptionPane.showInputDialog(null, "Escolha uma função:", "Biblioteca", 
         JOptionPane.INFORMATION_MESSAGE, null, funcoesFuncionario, funcoes[0]);
@@ -246,6 +246,32 @@ public class App {
        else if (selectedvalueFuncionario.equals("Listar")) {
             FuncionarioSingleton funcionarioSingleton = FuncionarioSingleton.getInstancia();
             funcionarioSingleton.getFuncionarios();
+
+       } else if (selectedvalueFuncionario.equals("Editar")) {
+
+        JTextField id = new JTextField();
+            JTextField nome = new JTextField();
+            
+            Object[] message = {
+                "ID: ", id,
+                "Nome: ", nome,
+
+            };
+
+            int option = JOptionPane.showConfirmDialog(null, message, "Entrada", JOptionPane.OK_CANCEL_OPTION);
+        
+            if (option == JOptionPane.OK_OPTION) {
+                int idString = Integer.parseInt(id.getText());
+                String nomeString = nome.getText();
+
+                FuncionarioSingleton funcionarioSingleton = FuncionarioSingleton.getInstancia();
+                funcionarioSingleton.atualizarFuncionario(new Funcionario(idString, nomeString));
+
+                funcionarioSingleton.getFuncionarios();
+                
+            }
+
+        
        }
 
     }
