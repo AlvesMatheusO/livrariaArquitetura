@@ -1,7 +1,9 @@
 package Clientes;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
 
 public class ClienteController {
     private final List<Cliente> clientes;
@@ -16,7 +18,12 @@ public class ClienteController {
     }
 
     public List<Cliente> listarClientes() {
-        return new ArrayList<>(clientes); // Retorna uma cópia da lista para evitar alterações externas.
+        System.out.println("Lista de Clientes:");
+        for (Cliente cliente : clientes) {
+            
+            System.out.println(cliente.getNome());
+        }
+        return clientes;
     }
 
     public void atualizarCliente(Cliente clienteAtualizado) {
@@ -28,16 +35,21 @@ public class ClienteController {
                 break;
             }
         }
-        System.out.println("Cliente não encontrado para atualização");
     }
 
-    public void removerCliente(Cliente cliente) {
-        if (clientes.remove(cliente)) {
-            System.out.println("Cliente removido com sucesso");
-        } else {
-            System.out.println("Cliente não encontrado para remoção");
+    public void removerCliente(int id) {
+        Iterator<Cliente> iterator = clientes.iterator();
+
+        while (iterator.hasNext()) {
+            Cliente cliente = iterator.next();
+            if (cliente.getId() == id) {
+                iterator.remove();
+                System.out.println("Cliente "+ cliente.getNome() + " excluido com sucesso");
+                break;
+            }
         }
-    }
+
+        }
 
     public Cliente pesquisarClientePorId(int id) {
         for (Cliente cliente : clientes) {

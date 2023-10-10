@@ -7,10 +7,12 @@ public class Cliente {
     private String endereco;
     private String telefone;
 
-    public Cliente (int id, String nome, String email) {
+    public Cliente (int id, String nome, String email, String endereco, String telefone) {
         this.id = id;
         this.nome = nome;
         this.email = email;
+        this.endereco = endereco;
+        this.telefone = telefone;
     }
 
     public int getId() {

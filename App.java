@@ -1,6 +1,8 @@
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import Clientes.Cliente;
+import Clientes.ClienteController;
 import Funcionarios.Funcionario;
 import Funcionarios.FuncionarioSingleton;
 import Livros.Livro;
@@ -17,12 +19,13 @@ public class App {
         
 
         LivroController livroController = new LivroController();
+        ClienteController clienteController = new ClienteController();
 
 
         // livroController.removerLivro(livro);
 
 
-       Object[] funcoes = {"Livro", "Funcionario"};
+       Object[] funcoes = {"Livro", "Funcionario", "Cliente"};
 
        Object selectedvalue = JOptionPane.showInputDialog(null, "Escolha uma função:", "Biblioteca", 
        JOptionPane.INFORMATION_MESSAGE, null, funcoes, funcoes[0]);
@@ -41,7 +44,7 @@ public class App {
         Object[] funcoesLivro = {"Adicionar","Remover", "Listar", "Editar"};
 
        Object selectedvalueLivro = JOptionPane.showInputDialog(null, "Escolha uma função:", "Biblioteca", 
-       JOptionPane.INFORMATION_MESSAGE, null, funcoesLivro, funcoes[0]);
+       JOptionPane.INFORMATION_MESSAGE, null, funcoesLivro, funcoesLivro[0]);
 
        if (selectedvalueLivro.equals("Adicionar")) {
         JTextField id = new JTextField();
@@ -105,7 +108,8 @@ public class App {
             "Data Publicação:", data,
         };
 
-        int option = JOptionPane.showConfirmDialog(null, message, "Editar Livro", JOptionPane.OK_CANCEL_OPTION);
+        int option = JOptionPane.showConfirmDialog(null, 
+        message, "Editar Livro", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
             int idString = Integer.parseInt(id.getText());
             String tituloString = titulo.getText();
@@ -245,6 +249,106 @@ public class App {
        }
 
     }
-}
+
+    while (selectedvalue.equals("Cliente")) {
+
+          Object[] funcoesCliente = {"Adicionar","Remover", "Listar", "Editar"};
+        
+        Object selectedvalueCliente = JOptionPane.showInputDialog(null, "Escolha uma função:", "Biblioteca", 
+        JOptionPane.INFORMATION_MESSAGE, null, funcoesCliente, funcoesCliente[0]);
+
+        if (selectedvalueCliente.equals("Adicionar")) {
+
+            JTextField id = new JTextField();
+            JTextField nome = new JTextField();
+            JTextField email = new JTextField();
+            JTextField endereco = new JTextField();
+            JTextField telefone = new JTextField();
+            
+            Object[] message = {
+                "id:", id,
+                "Nome:", nome,
+                "Email:", email,
+                "Endereço:", endereco,
+                "Telefone:", telefone,
+            
+            };
+
+              int option = JOptionPane.showConfirmDialog(null, message, "Entrada", JOptionPane.OK_CANCEL_OPTION);
+                if (option == JOptionPane.OK_OPTION) {
+                int idString = Integer.parseInt(id.getText());
+                String nomeString = nome.getText();
+                String emailString = email.getText();
+                String enderecoString = endereco.getText();
+                String telefoneString = telefone.getText();
+
+                
+                clienteController.adicionarCliente(new Cliente(idString, nomeString, emailString, enderecoString, telefoneString));
+                clienteController.listarClientes();
+
+                }
+
+
+        } else if (selectedvalueCliente.equals("Remover")) {
+
+            JTextField id = new JTextField();
+
+            Object[] message = {
+            "id:", id,
+            };
+
+            int option = JOptionPane.showConfirmDialog(null, message, "Digite o ID do Cliente para exclusão", JOptionPane.OK_CANCEL_OPTION);
+
+            if (option == JOptionPane.OK_OPTION) {
+            int idString = Integer.parseInt(id.getText());
+
+            clienteController.removerCliente(idString);
+
+            }
+        } else if(selectedvalueCliente.equals("Listar")) {
+            clienteController.listarClientes();
+
+        } else if (selectedvalueCliente.equals("Editar")) {
+
+            JTextField id = new JTextField();
+            JTextField nome = new JTextField();
+            JTextField email = new JTextField();
+            JTextField endereco = new JTextField();
+            JTextField telefone = new JTextField();
+
+            Object[] message = {
+            "id:", id,
+            "Nome:", nome,
+            "Email:", email,
+            "Endereço:", endereco,
+            "Telefone:", telefone,
+        };
+
+        int option = JOptionPane.showConfirmDialog(null, 
+        message, "Editar Funcionario", JOptionPane.OK_CANCEL_OPTION);
+
+
+        if (option == JOptionPane.OK_OPTION) {
+            
+            int idString = Integer.parseInt(id.getText());
+            String nomeString = nome.getText();
+            String emailString = email.getText();
+            String enderecoString = endereco.getText();
+            String telefoneString = telefone.getText();
+            
+            Cliente cliente = new Cliente(idString, nomeString, emailString, enderecoString, telefoneString);
+
+            clienteController.atualizarCliente(cliente);
+            clienteController.listarClientes();
+        }
+           
+            
+        }
+
+        
+
+        
+        }   
+    }
 }
 
