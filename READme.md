@@ -2,7 +2,7 @@
 
 <p align="center">
 
-<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.techtudo.com.br%2Fnoticias%2F2014%2F11%2Fjava-entenda-para-que-serve-o-software-e-os-problemas-da-sua-ausencia.ghtml&psig=AOvVaw0A9kzIBj0XHzgu3R3qSlmk&ust=1697050498605000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPC_svGT7IEDFQAAAAAdAAAAABAE"/>
+![Alt text](image-6.png)
   
   <img src="http://img.shields.io/static/v1?label=TESTES&message=%3E100&color=GREEN&style=for-the-badge"/>
    <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=RED&style=for-the-badge"/>
