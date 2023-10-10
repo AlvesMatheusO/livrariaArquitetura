@@ -2,7 +2,7 @@
 
 <p align="center">
 
-![Alt text](image-6.png)
+![Alt text](img/image-6.png)
   
   <img src="http://img.shields.io/static/v1?label=TESTES&message=%3E100&color=GREEN&style=for-the-badge"/>
    <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=RED&style=for-the-badge"/>
@@ -62,12 +62,12 @@ Os resultados são impressos na aba de execução utilizando-se do System.out.pr
 
 ## Layout :dash:
 
-![tela-inicial](image.png)
-![tipo-livro](image-1.png)
-![entrada](image-2.png)
-![cliente](image-3.png)
-![exclusaoCliente](image-4.png)
-![Funcionario](image-5.png)
+![tela-inicial](img/image.png)
+![tipo-livro](img/image-1.png)
+![entrada](img/image-2.png)
+![cliente](img/image-3.png)
+![exclusaoCliente](img/image-4.png)
+![Funcionario](img/image-5.png)
 
 ## Pré-requisitos
 -Java instalado;
